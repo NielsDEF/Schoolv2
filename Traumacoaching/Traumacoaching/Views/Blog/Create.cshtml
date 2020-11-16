@@ -1,0 +1,49 @@
+﻿@model Traumacoaching.Models.Blog
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Nieuwe blogpost maken</h1>
+
+<h4>Blog</h4>
+<hr />
+<div class="row">
+    <div class="col-md-9">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Bid" class="control-label"></label>
+                <input asp-for="Bid" class="form-control" />
+                <span asp-validation-for="Bid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Btitle" class="control-label"></label>
+                <input asp-for="Btitle" class="form-control" />
+                <span asp-validation-for="Btitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BDesc" class="control-label"></label>
+                <input asp-for="BDesc" class="form-control" />
+                <span asp-validation-for="BDesc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BUrl" class="control-label"></label>
+                <input asp-for="BUrl" class="form-control" />
+                <span asp-validation-for="BUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+            <b>@ViewData["Message"]</b>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
