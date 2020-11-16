@@ -1,0 +1,10 @@
+C:\Users\Niels\source\repos\AlgoritmeCircus\bin\Debug\AlgoritmeCircus.exe.config
+C:\Users\Niels\source\repos\AlgoritmeCircus\bin\Debug\AlgoritmeCircus.exe
+C:\Users\Niels\source\repos\AlgoritmeCircus\bin\Debug\AlgoritmeCircus.pdb
+C:\Users\Niels\source\repos\AlgoritmeCircus\obj\Debug\AlgoritmeCircus.csprojAssemblyReference.cache
+C:\Users\Niels\source\repos\AlgoritmeCircus\obj\Debug\AlgoritmeCircus.Form1.resources
+C:\Users\Niels\source\repos\AlgoritmeCircus\obj\Debug\AlgoritmeCircus.Properties.Resources.resources
+C:\Users\Niels\source\repos\AlgoritmeCircus\obj\Debug\AlgoritmeCircus.csproj.GenerateResource.cache
+C:\Users\Niels\source\repos\AlgoritmeCircus\obj\Debug\AlgoritmeCircus.csproj.CoreCompileInputs.cache
+C:\Users\Niels\source\repos\AlgoritmeCircus\obj\Debug\AlgoritmeCircus.exe
+C:\Users\Niels\source\repos\AlgoritmeCircus\obj\Debug\AlgoritmeCircus.pdb
