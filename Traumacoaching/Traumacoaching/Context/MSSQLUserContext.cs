@@ -15,7 +15,7 @@ namespace Traumacoaching.Context
     /// 
     /// This code is based on/inspired by https://github.com/mark-j/dapper-identity
     /// </summary>
-    public class MSSQLUserContext : IUserStore<User>, IUserPasswordStore<User>, IUserEmailStore<User> /*IUserRoleStore<User>*/
+    public class MSSQLUserContext : IUserStore<User>, IUserPasswordStore<User>, IUserEmailStore<User>, IUserRoleStore<User>
     {
         private readonly string _connectionString;
         public MSSQLUserContext(IConfiguration configuration)
@@ -46,7 +46,6 @@ namespace Traumacoaching.Context
                     sqlCommand.Parameters.AddWithValue("@email", user.Email);
                     sqlCommand.Parameters.AddWithValue("@password", user.Password);
                     user.Id = Convert.ToInt32(sqlCommand.ExecuteScalar());
-                    sqlCommand.ExecuteNonQuery();
                     return Task.FromResult<IdentityResult>(IdentityResult.Success);
                 }
             }
@@ -88,7 +87,7 @@ namespace Traumacoaching.Context
             using (var connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
-                SqlCommand sqlCommand = new SqlCommand("SELECT id, username, email FROM dbo.Users WHERE email=@email", connection);
+                SqlCommand sqlCommand = new SqlCommand("SELECT id, username, email FROM Users WHERE email=@email", connection);
                 sqlCommand.Parameters.AddWithValue("@email", normalizedEmail);
                 using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
                 {
@@ -119,7 +118,7 @@ namespace Traumacoaching.Context
                 using (var connection = new SqlConnection(_connectionString))
                 {
                     connection.Open();
-                    SqlCommand sqlCommand = new SqlCommand("SELECT id, username, email FROM dbo.Users WHERE Id=@Id", connection);
+                    SqlCommand sqlCommand = new SqlCommand("SELECT id, username, email FROM Users WHERE Id=@Id", connection);
                     sqlCommand.Parameters.AddWithValue("@id", userId);
                     using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
                     {
@@ -149,7 +148,7 @@ namespace Traumacoaching.Context
                 using (var connection = new SqlConnection(_connectionString))
                 {
                     connection.Open();
-                    SqlCommand sqlCommand = new SqlCommand("SELECT id, username, email, password FROM dbo.Users WHERE email=@email", connection);
+                    SqlCommand sqlCommand = new SqlCommand("SELECT id, username, email, password FROM Users WHERE email=@email", connection);
                     sqlCommand.Parameters.AddWithValue("@email", normalizedUserName);
                     using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
                     {
@@ -194,37 +193,37 @@ namespace Traumacoaching.Context
             return Task.FromResult(user.Password);
         }
 
-        //public Task<IList<string>> GetRolesAsync(User user, CancellationToken cancellationToken)
-        //{
-        //    try
-        //    {
+        public Task<IList<string>> GetRolesAsync(User user, CancellationToken cancellationToken)
+        {
+            try
+            {
 
 
-        //        cancellationToken.ThrowIfCancellationRequested();
+                cancellationToken.ThrowIfCancellationRequested();
 
-        //        using (var connection = new SqlConnection(_connectionString))
-        //        {
-        //            connection.Open();
-        //            SqlCommand sqlCommand = new SqlCommand("SELECT r.[name] FROM [Role] r INNER JOIN [UserRole] ur ON ur.[roleId] = r.id WHERE ur.userId = @userId", connection);
-        //            sqlCommand.Parameters.AddWithValue("@userId", user.Id);
-        //            using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
-        //            {
-        //                IList<string> roles = new List<string>();
-        //                while (sqlDataReader.Read())
-        //                {
-        //                    roles.Add(sqlDataReader["Name"].ToString());
-        //                }
+                using (var connection = new SqlConnection(_connectionString))
+                {
+                    connection.Open();
+                    SqlCommand sqlCommand = new SqlCommand("SELECT r.[name] FROM [Roles] r INNER JOIN [UserRoles] ur ON ur.[roleId] = r.id WHERE ur.userId = @userId", connection);
+                    sqlCommand.Parameters.AddWithValue("@userId", user.Id);
+                    using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
+                    {
+                        IList<string> roles = new List<string>();
+                        while (sqlDataReader.Read())
+                        {
+                            roles.Add(sqlDataReader["Name"].ToString());
+                        }
 
-        //                return Task.FromResult(roles);
-        //            }
-        //        }
-        //    }
-        //    catch (Exception)
-        //    {
+                        return Task.FromResult(roles);
+                    }
+                }
+            }
+            catch (Exception)
+            {
 
-        //        throw;
-        //    }
-        //}
+                throw;
+            }
+        }
 
         public Task<string> GetUserIdAsync(User user, CancellationToken cancellationToken)
         {
@@ -257,11 +256,11 @@ namespace Traumacoaching.Context
                 {
                     connection.Open();
 
-                    SqlCommand sqlCommand = new SqlCommand("SELECT [id] FROM Role WHERE [name] = @normalizedName", connection);
+                    SqlCommand sqlCommand = new SqlCommand("SELECT [id] FROM Roles WHERE [name] = @normalizedName", connection);
                     sqlCommand.Parameters.AddWithValue("@normalizedName", roleName.ToUpper());
                     int? roleId = sqlCommand.ExecuteScalar() as int?;
 
-                    SqlCommand sqlCommandUserRole = new SqlCommand("SELECT COUNT(*) FROM Role WHERE [userId] = @userId AND [roleId] =@roleId", connection);
+                    SqlCommand sqlCommandUserRole = new SqlCommand("SELECT COUNT(*) FROM Roles WHERE [userId] = @userId AND [roleId] =@roleId", connection);
                     sqlCommandUserRole.Parameters.AddWithValue("@userId", user.Id);
                     sqlCommandUserRole.Parameters.AddWithValue("@roleId", roleId);
 
