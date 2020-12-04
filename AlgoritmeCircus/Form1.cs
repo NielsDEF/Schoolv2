@@ -50,6 +50,7 @@ namespace AlgoritmeCircus
             lbWagons.DataSource = null;
             lbWagons.Items.Clear();
             lbWagons.Refresh();
+            t.Wagons.Clear();
             labIngevoerd.Visible = true;
             labIngevoerd.Text = lbIngevoerd.Items.Count.ToString();
             foreach (string veld in lbIngevoerd.Items)
@@ -150,11 +151,19 @@ namespace AlgoritmeCircus
                     dieren.Remove("GV");
                 }
             }
-                lbIngevoerd.Items.Clear();
-                for (int i = 0; i < dieren.Count; i++)
-                {
-                    lbIngevoerd.Items.Add(dieren.ElementAt(i));
-                }
+            lbIngevoerd.Items.Clear();
+            for (int i = 0; i < dieren.Count; i++)
+            {
+                lbIngevoerd.Items.Add(dieren.ElementAt(i));
+            }
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            lbWagons.DataSource = null;
+            lbWagons.Items.Clear();
+            lbWagons.Refresh();
+            t.Wagons.Clear();
         }
     }
 }

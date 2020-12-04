@@ -8,33 +8,33 @@ namespace AlgoritmeCircus
 {
     class Wagon
     {
-        public int Punten { get; set; } = 10;
+        public int Punten { get; set; } = 11;
 
         public List<Dier> Dieren { get; } = new List<Dier>();
 
 
-        public bool KanDierVerdelen(Dier vince)
+        public bool KanDierVerdelen(Dier nieuwdier)
         {
             //loop
             foreach (Dier d in Dieren)
             {
-                if (vince.Punten >= d.Punten && vince.AlgemeneSoort == DierSoorten.Carnivoor)
+                if (nieuwdier.Punten >= d.Punten && nieuwdier.AlgemeneSoort == DierSoorten.Carnivoor)
                 {
                     return false;
                 }
-                if (vince.Punten <= d.Punten && d.AlgemeneSoort == DierSoorten.Carnivoor)
+                if (nieuwdier.Punten <= d.Punten && d.AlgemeneSoort == DierSoorten.Carnivoor)
                 {
                     return false;
                 }
             }
 
-            return (Punten > vince.Punten);
+            return (Punten > nieuwdier.Punten);
         }
 
         public override string ToString()
         {
             string tekst = "wagon: ";
-            foreach (Dier d in Dieren) 
+            foreach (Dier d in Dieren)
             {
                 if (Dieren.IndexOf(d) != Dieren.Count - 1)
                     tekst += d.ToString() + ", ";
@@ -44,10 +44,10 @@ namespace AlgoritmeCircus
             return tekst;
         }
 
-        public void VoegDierToe(Dier vince)
+        public void VoegDierToe(Dier nieuwdier)
         {
-            Dieren.Add(vince);
-            Punten -= vince.Punten;
+            Dieren.Add(nieuwdier);
+            Punten -= nieuwdier.Punten;
         }
 
 

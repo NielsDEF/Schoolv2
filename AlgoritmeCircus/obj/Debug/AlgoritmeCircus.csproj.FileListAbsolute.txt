@@ -8,3 +8,13 @@ C:\Users\Niels\source\repos\AlgoritmeCircus\obj\Debug\AlgoritmeCircus.csproj.Gen
 C:\Users\Niels\source\repos\AlgoritmeCircus\obj\Debug\AlgoritmeCircus.csproj.CoreCompileInputs.cache
 C:\Users\Niels\source\repos\AlgoritmeCircus\obj\Debug\AlgoritmeCircus.exe
 C:\Users\Niels\source\repos\AlgoritmeCircus\obj\Debug\AlgoritmeCircus.pdb
+C:\Users\Niels\Documents\Github\Schoolv2\AlgoritmeCircus\bin\Debug\AlgoritmeCircus.exe.config
+C:\Users\Niels\Documents\Github\Schoolv2\AlgoritmeCircus\bin\Debug\AlgoritmeCircus.exe
+C:\Users\Niels\Documents\Github\Schoolv2\AlgoritmeCircus\bin\Debug\AlgoritmeCircus.pdb
+C:\Users\Niels\Documents\Github\Schoolv2\AlgoritmeCircus\obj\Debug\AlgoritmeCircus.csprojAssemblyReference.cache
+C:\Users\Niels\Documents\Github\Schoolv2\AlgoritmeCircus\obj\Debug\AlgoritmeCircus.Form1.resources
+C:\Users\Niels\Documents\Github\Schoolv2\AlgoritmeCircus\obj\Debug\AlgoritmeCircus.Properties.Resources.resources
+C:\Users\Niels\Documents\Github\Schoolv2\AlgoritmeCircus\obj\Debug\AlgoritmeCircus.csproj.GenerateResource.cache
+C:\Users\Niels\Documents\Github\Schoolv2\AlgoritmeCircus\obj\Debug\AlgoritmeCircus.csproj.CoreCompileInputs.cache
+C:\Users\Niels\Documents\Github\Schoolv2\AlgoritmeCircus\obj\Debug\AlgoritmeCircus.exe
+C:\Users\Niels\Documents\Github\Schoolv2\AlgoritmeCircus\obj\Debug\AlgoritmeCircus.pdb
